@@ -288,6 +288,11 @@ bool SkeletonAnimator::is_looping() const {
 		return false;
 	return (position > loop_start && position < loop_end);
 }
+bool SkeletonAnimator::is_exiting() const {
+	if (!animation.is_valid())
+		return false;
+	return (state == ANIMATION_STATE_EXITING);
+}
 bool SkeletonAnimator::has_ended() const {
 	if (!animation.is_valid())
 		return false;
@@ -370,6 +375,7 @@ void SkeletonAnimator::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("is_middle"), &is_middle);
 	ClassDB::bind_method(D_METHOD("is_looping"), &is_looping);
 	ClassDB::bind_method(D_METHOD("has_ended"), &has_ended);
+	ClassDB::bind_method(D_METHOD("is_exiting"), &is_exiting);
 
 	ClassDB::bind_method(D_METHOD("play"), &play);
 	ClassDB::bind_method(D_METHOD("stop"), &stop);

@@ -78,6 +78,7 @@ class SkeletonAnimator : public Node {
 		bool is_middle() const;
 		bool is_looping() const;
 		bool has_ended() const;
+		bool is_exiting() const;
 
 		bool is_using_left_arm() const;
 		bool is_using_right_arm() const;

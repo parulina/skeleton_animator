@@ -363,45 +363,45 @@ PoolStringArray SkeletonAnimator::get_bone_filter() const {
 }
 
 void SkeletonAnimator::_bind_methods() {
-	ClassDB::bind_method(D_METHOD("set_animation"), &set_animation);
-	ClassDB::bind_method(D_METHOD("get_animation"), &get_animation);
+	ClassDB::bind_method(D_METHOD("set_animation"), &SkeletonAnimator::set_animation);
+	ClassDB::bind_method(D_METHOD("get_animation"), &SkeletonAnimator::get_animation);
 
-	ClassDB::bind_method(D_METHOD("set_position"), &set_position);
-	ClassDB::bind_method(D_METHOD("get_position"), &get_position);
-	ClassDB::bind_method(D_METHOD("set_multiplier"), &set_multiplier);
-	ClassDB::bind_method(D_METHOD("get_multiplier"), &get_multiplier);
+	ClassDB::bind_method(D_METHOD("set_position"), &SkeletonAnimator::set_position);
+	ClassDB::bind_method(D_METHOD("get_position"), &SkeletonAnimator::get_position);
+	ClassDB::bind_method(D_METHOD("set_multiplier"), &SkeletonAnimator::set_multiplier);
+	ClassDB::bind_method(D_METHOD("get_multiplier"), &SkeletonAnimator::get_multiplier);
 
-	ClassDB::bind_method(D_METHOD("is_playing"), &is_playing);
-	ClassDB::bind_method(D_METHOD("is_middle"), &is_middle);
-	ClassDB::bind_method(D_METHOD("is_looping"), &is_looping);
-	ClassDB::bind_method(D_METHOD("has_ended"), &has_ended);
-	ClassDB::bind_method(D_METHOD("is_exiting"), &is_exiting);
+	ClassDB::bind_method(D_METHOD("is_playing"), &SkeletonAnimator::is_playing);
+	ClassDB::bind_method(D_METHOD("is_middle"), &SkeletonAnimator::is_middle);
+	ClassDB::bind_method(D_METHOD("is_looping"), &SkeletonAnimator::is_looping);
+	ClassDB::bind_method(D_METHOD("has_ended"), &SkeletonAnimator::has_ended);
+	ClassDB::bind_method(D_METHOD("is_exiting"), &SkeletonAnimator::is_exiting);
 
-	ClassDB::bind_method(D_METHOD("play"), &play);
-	ClassDB::bind_method(D_METHOD("stop"), &stop);
-	ClassDB::bind_method(D_METHOD("is_using_left_arm"), &is_using_left_arm);
-	ClassDB::bind_method(D_METHOD("is_using_right_arm"), &is_using_right_arm);
+	ClassDB::bind_method(D_METHOD("play"), &SkeletonAnimator::play);
+	ClassDB::bind_method(D_METHOD("stop"), &SkeletonAnimator::stop);
+	ClassDB::bind_method(D_METHOD("is_using_left_arm"), &SkeletonAnimator::is_using_left_arm);
+	ClassDB::bind_method(D_METHOD("is_using_right_arm"), &SkeletonAnimator::is_using_right_arm);
 
-	ClassDB::bind_method(D_METHOD("set_fade"), &set_fade);
-	ClassDB::bind_method(D_METHOD("is_fade"), &is_fade);
+	ClassDB::bind_method(D_METHOD("set_fade"), &SkeletonAnimator::set_fade);
+	ClassDB::bind_method(D_METHOD("is_fade"), &SkeletonAnimator::is_fade);
 
-	ClassDB::bind_method(D_METHOD("set_bone_filter"), &set_bone_filter);
-	ClassDB::bind_method(D_METHOD("get_bone_filter"), &get_bone_filter);
+	ClassDB::bind_method(D_METHOD("set_bone_filter"), &SkeletonAnimator::set_bone_filter);
+	ClassDB::bind_method(D_METHOD("get_bone_filter"), &SkeletonAnimator::get_bone_filter);
 
 	//ClassDB::bind_method(D_METHOD(""), &);
 
-	ClassDB::bind_method(D_METHOD("set_playing_speed"), &set_playing_speed);
-	ClassDB::bind_method(D_METHOD("get_playing_speed"), &get_playing_speed);
+	ClassDB::bind_method(D_METHOD("set_playing_speed"), &SkeletonAnimator::set_playing_speed);
+	ClassDB::bind_method(D_METHOD("get_playing_speed"), &SkeletonAnimator::get_playing_speed);
 
-	ClassDB::bind_method(D_METHOD("set_loop_count"), &set_loop_count);
-	ClassDB::bind_method(D_METHOD("get_loop_count"), &get_loop_count);
+	ClassDB::bind_method(D_METHOD("set_loop_count"), &SkeletonAnimator::set_loop_count);
+	ClassDB::bind_method(D_METHOD("get_loop_count"), &SkeletonAnimator::get_loop_count);
 
-	ClassDB::bind_method(D_METHOD("get_animation_looped_length"), &get_animation_looped_length);
-	ClassDB::bind_method(D_METHOD("get_animation_name"), &get_animation_name);
+	ClassDB::bind_method(D_METHOD("get_animation_looped_length"), &SkeletonAnimator::get_animation_looped_length);
+	ClassDB::bind_method(D_METHOD("get_animation_name"), &SkeletonAnimator::get_animation_name);
 
 	ClassDB::bind_method(D_METHOD("set_target_skeleton_path"), &SkeletonAnimator::set_target_skeleton_path);
 
-	ClassDB::bind_method(D_METHOD("process_animation"), &process_animation);
+	ClassDB::bind_method(D_METHOD("process_animation"), &SkeletonAnimator::process_animation);
 	ClassDB::bind_method(D_METHOD("apply_animation"), &SkeletonAnimator::apply_animation);
 
 	

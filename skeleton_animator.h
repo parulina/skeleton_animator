@@ -36,6 +36,7 @@ class SkeletonAnimator : public Node {
 		Skeleton *target_skeleton = nullptr;
 
 		Dictionary bone_id_mapping = Dictionary();
+		Dictionary bone_uses = Dictionary();
 
 		Ref<Animation>	animation;
 
@@ -54,11 +55,6 @@ class SkeletonAnimator : public Node {
 		float		speed = 1.0f;
 		float		multiplier = 1.0f;
 		bool		mirror = false;
-
-
-
-		bool uses_left_arm = false;
-		bool uses_right_arm = false;
 
 		PoolStringArray bone_filter = PoolStringArray();
 
@@ -80,8 +76,8 @@ class SkeletonAnimator : public Node {
 		bool has_ended() const;
 		bool is_exiting() const;
 
-		bool is_using_left_arm() const;
-		bool is_using_right_arm() const;
+		bool is_using_bone(const String &p_bone) const;
+		int get_bone_uses(const String &p_bone) const;
 
 		void play(float p_time = 0.0f, int p_loop = 1, float p_speed = 1.0f);
 		void stop(bool immediate);

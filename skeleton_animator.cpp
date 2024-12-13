@@ -42,20 +42,14 @@ void SkeletonAnimator::play(float p_time, int p_loop, float p_speed) {
 
 	loop_count = p_loop;
 
-	uses_left_arm = false;
-	uses_right_arm = false;
+	bone_uses.clear();
 
 	for (int tk = 0; tk < animation->get_track_count(); tk++) {
 		NodePath path = animation->track_get_path(tk);
 		if (path.get_subname_count() == 1) {
 			String bone_name = path.get_subname(0);
-			if (bone_name.begins_with("blade_")) {
-				bool uses_arm = (animation->track_get_key_count(tk) > 2);
-				if (bone_name.ends_with("_L"))
-					uses_left_arm = uses_arm;
-				if (bone_name.ends_with("_R"))
-					uses_right_arm = uses_arm;
-			}
+			bone_uses[bone_name] = animation->track_get_key_count(tk);
+
 			if (bone_name == "animCtrl") {
 				int key_count = animation->track_get_key_count(tk);
 				if (key_count >= 1) {
@@ -299,11 +293,12 @@ bool SkeletonAnimator::has_ended() const {
 	return (state == ANIMATION_STATE_EXITED && position >= animation->get_length());
 }
 
-bool SkeletonAnimator::is_using_left_arm() const {
-	return uses_left_arm;
+
+bool SkeletonAnimator::is_using_bone(const String& p_bone) const {
+	return bone_uses.has(p_bone);
 }
-bool SkeletonAnimator::is_using_right_arm() const {
-	return uses_right_arm;
+int SkeletonAnimator::get_bone_uses(const String& p_bone) const {
+	return bone_uses.get(p_bone, 0);
 }
 
 
@@ -379,8 +374,8 @@ void SkeletonAnimator::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("play"), &SkeletonAnimator::play);
 	ClassDB::bind_method(D_METHOD("stop"), &SkeletonAnimator::stop);
-	ClassDB::bind_method(D_METHOD("is_using_left_arm"), &SkeletonAnimator::is_using_left_arm);
-	ClassDB::bind_method(D_METHOD("is_using_right_arm"), &SkeletonAnimator::is_using_right_arm);
+	ClassDB::bind_method(D_METHOD("is_using_bone"), &SkeletonAnimator::is_using_bone);
+	ClassDB::bind_method(D_METHOD("get_bone_uses"), &SkeletonAnimator::get_bone_uses);
 
 	ClassDB::bind_method(D_METHOD("set_fade"), &SkeletonAnimator::set_fade);
 	ClassDB::bind_method(D_METHOD("is_fade"), &SkeletonAnimator::is_fade);
